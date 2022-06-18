@@ -1,4 +1,4 @@
-#setup environment & import data
+#setup environment & imported data
 library(tidyverse)
 sales <- read_csv("Food_Company_Sales_Table.csv")
 product <- read_csv("Food_Company_Product_Table.csv")
@@ -16,7 +16,7 @@ Sales_Data$Client_ID <- as.factor(Sales_Data$Client_ID)
 Sales_Data <- Sales_Data %>% mutate(Price = Sales/Qty)
 
 #Observed the relation between Qty & Price
-#found that more products' price were below 200 & qty were below 500
+#found that more products' price was below 200 & qty was below 500
 Sales_Data %>% ggplot(aes(Price,Qty)) + geom_point(color="Orange",alpha=0.2) + labs(title="Price vs QTY")+theme_bw()
 
 #Observe sales distribution by clients 
@@ -42,7 +42,7 @@ Sales_by_Client_and_Product <-Sales_Data %>% group_by(Client_Name,Product_Name) 
 Sales_by_Client_and_Product %>% ggplot(aes(Product_Name,Total_Sales,fill=Product_Name))+geom_bar(stat='identity')+facet_wrap(~Client_Name)+labs(title="Total Sales by Client and Product")+theme_bw()
 
 #Created the geom_rec plot
-#(1) reformat the Sales_by_Client_and_Product plot ( from long data to wide data)
+#(1) reformatted the Sales_by_Client_and_Product plot ( from long data to wide data)
 Sales_Percentage <- Sales_by_Client_and_Product %>% spread(key=Product_Name,value=Total_Sales,fill=0)
 #(2)calculated x percentage by client name
 x_percentage <-c()
