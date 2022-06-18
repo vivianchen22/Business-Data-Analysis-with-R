@@ -1,8 +1,8 @@
 #setup environment & import data
 library(tidyverse)
-sales <- read_csv("SalesTable.csv")
-product <- read_csv("ProductTable.csv")
-client <- read_csv("ClientTable.csv")
+sales <- read_csv("Food_Company_Sales_Table.csv")
+product <- read_csv("Food_Company_Product_Table.csv")
+client <- read_csv("Food_Company_Client_Table.csv")
 
 #inner join sales & product & client Tables
 Sales_Data <- sales %>% inner_join(product, by="Product_ID") %>% inner_join(client,by="Client_ID")
